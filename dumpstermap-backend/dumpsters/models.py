@@ -12,7 +12,7 @@ class Dumpster(models.Model):
     imported_from = models.CharField(max_length=255, null=True, blank=True)
     import_reference = models.CharField(max_length=255, null=True, blank=True)
 
-    name = models.CharField(max_length=255, null=True, default="Dumpster")
+    name = models.CharField(max_length=255, null=True, default="Unnamed Dumpster")
 
     @property
     def rating(self):
