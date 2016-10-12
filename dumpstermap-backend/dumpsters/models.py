@@ -11,8 +11,19 @@ class Dumpster(models.Model):
     imported = models.BooleanField(default=False)
     imported_from = models.CharField(max_length=255, null=True, blank=True)
     import_reference = models.CharField(max_length=255, null=True, blank=True)
+    import_date = models.DateTimeField(null=True)
 
     name = models.CharField(max_length=255, null=True, default="Unnamed Dumpster")
+
+    EDIBLE = 'edible'
+    NONEDIBLE = 'non-edible'
+    BOTH = 'both'
+    UNKNOWN = 'unknown'
+    TYPE_CHOICES = ((EDIBLE, 'Food'),
+                    (NONEDIBLE, 'Non-edible'),
+                    (BOTH, 'Food & Other stuff'),
+                    (UNKNOWN, 'Unknown'))
+    type = models.CharField(max_length=100, choices=TYPE_CHOICES, default=UNKNOWN)
 
     @property
     def rating(self):
