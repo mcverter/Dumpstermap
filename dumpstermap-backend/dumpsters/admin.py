@@ -12,7 +12,9 @@ class VotingInline(admin.TabularInline):
     model = Voting
 
 class DumpsterAdmin(admin.ModelAdmin):
-    list_display = ('created', 'rating', 'imported_from')
+    list_display = ('id', 'created', 'rating', 'type', 'imported_from', 'import_reference', 'import_date')
     inlines = [VotingInline,
                ]
+    search_fields = ['id', 'import_reference', 'imported_from']
+
 admin.site.register(Dumpster, DumpsterAdmin)
